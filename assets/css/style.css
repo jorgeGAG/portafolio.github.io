@@ -1,0 +1,162 @@
+/*Definiendo propiedad general*/
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+/*Dwefiniendo variables genéricas*/
+:root {
+    /*Tipografía*/
+    --font-family: 'Raleway', sans-serif;
+    /*Color de fuente*/
+    --font-color: #464646;
+    /*Color de fuente secundaria*/
+    --font-color-two: #ffffff;
+    /*Color de fondo principal*/
+    --color-fondo-primario: #F5F5F5;
+    /*Color de fuente secundario*/
+    --color-fondo-secundario: #EAF2FD;
+    /*Color primario boton*/
+    --color-botones-primario: #2A7AE4;
+
+    /*<----Alncho y alto de foto---->*/
+    /*368px*/
+    --ancho-alto-foto-Escritorio: 23em;
+    /*146px*/
+    --ancho-alto-foto-Tablet: 9.125em;
+    /*98px*/
+    --ancho-alto-foto-Celular: 6.125em;
+    /*<----Alncho y alto de foto---->*/
+
+    /*<----Alturas de header para Escritorio, Tablet y Celular---->*/
+    /*88px*/
+    --altura-header-Escritorio: 5.5em;
+    /*80px*/
+    --altura-header-Tablet: 5em;
+    /*32px*/
+    --altura-menu-Tablet: 2em;
+    /*124.483pxpx*/
+    --altura-header-Celular: 7.1em;
+    /*<----Alturas de header para Escritorio, Tablet y Celular---->*/
+
+    /*
+    Formula para calcular la altura total de la seccionPresentación en Escritorio
+    */
+    --altura-seccionPresentacion: calc(100vh - var(--altura-header-Escritorio));
+    /*
+    --Se sigue la misma lógica que las formulas anteriores, solo variando la altura
+    --del header del celular, la cual aumenta.
+    */
+    --altura-seccionPresentacion-Celular: calc(100vh - var(--altura-header-Celular));
+    /*Para tablet*/
+    --altura-seccionPresentacion-Tablet: calc(100vh - var(--altura-header-Tablet));
+    /*<------------------Tamaños de letra------------------*/
+    /*
+    --Los siguientes tamaños se usan dependiendo el tamaño del dispositivo en los
+    --selectores
+    */
+
+    /*<----Escritorio---->*/
+    /*52px*/
+    --tamañoLetraEscritorio-titulos: 3.25em;
+    /*32px*/
+    --tamañoLetraEscritorio-subtitulosSeccion: 2em;
+    /*22px*/
+    --tamañoLetraEscritorio-subtitulosDscImagen: 1.375em;
+    /*16px*/
+    --tamañoLetraEscritorio-parrafosYLinks-dscImagen-botones: 1em;
+
+    /*<----Tablet---->*/
+    /*22px*/
+    --tamañoLetraTablet-titulosYSubtitulos: 1.375em;
+    /*16px*/
+    --tamañoLetraTablet-parrafosYLinks-dscBienvenida-subtitulosDscImagen: 1em;
+    /*14px*/
+    --tamañoLetraTablet-parrafoSobreMi-dscImagenes-botones: 0.875em;
+
+    /*<----Móvil---->*/
+    /*22px*/
+    --tamañoLetraCelular-tituloBienvenida-subtitulosSeccion: 1.375em;
+    /*16px*/
+    --tamañoLetraCelular-subtituloDescripcionImagen: 1em;
+    /*14px*/
+    --tamañoLetraCelular-parrafosYLinks-descripcionImagen: 0.875em;
+    /*<----------------Fin Tamaños de letra-----------------*/
+
+    /*<------------------Tamaño container-------------------*/
+    /*
+    --1136px Para evitar desbordamiento. 
+    --Valor aplicado en el container.css
+    */
+    --tamaño-containerMaxWidth: 71em;
+    /*Padding aplicado al container en media queries*/
+    --padding-tablet-celularHorizontal: 0 2em;
+    --padding-celularVertical: 0 1em;
+    /*<----------------Fin Tamaño container-----------------*/
+
+    /*Variable para centrar elementos horizontalmente*/
+    --centrar-con-margin: 0 auto;
+}
+
+/*Definiendo propiedad smooth-scroll, tipografía y color de fuente global*/
+html {
+    color: var(--font-color);
+    font-family: var(--font-family);
+    scroll-behavior: smooth;
+}
+
+/*Desplazando contenidos principales como main, header, etc en columna
+a fin de colorcar la sección principal con 0 margen arriba*/
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/*<------------------------------------------Selectores Genéricos------------------------------------------>*/
+/*Configurando tipografía y color de tipografía*/
+.font-style {
+    color: var(--font-color);
+    font-family: var(--font-family);
+}
+
+/*Configurando color de links, eliminando subrayado y 
+colocando una transición*/
+.link-style {
+    color: var(--font-color);
+    font-weight: 500;
+    text-decoration: none;
+    /*Estableciendo tiempo de desplazamiento al pasar el mouse*/
+    transition: 0.5s;
+}
+
+/*Configurando desplazamiento hacia abajo al pasar 
+el puntero sobre el link*/
+.link-style:hover {
+    color: var(--color-botones-primario);
+}
+
+/*Configurando subtitulos h2 con margen inferior de 32 px
+y alineados al centro*/
+.subtitulos {
+    font-size: var(--tamañoLetraEscritorio-subtitulosSeccion);
+    font-weight: 700;
+    margin: 0 0 2em 0;
+    ;
+    text-align: center;
+}
+
+/*<----------------------------------------Fin Selectores Genéricos---------------------------------------->*/
+/*Tablets y celulares grandes u horizontales*/
+@media only screen and (min-width: 768px) and (max-width: 1080px) {
+    .subtitulos {
+        font-size: var(--tamañoLetraTablet-titulosYSubtitulos);
+    }
+}
+
+/*Celulares verticales*/
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+    .subtitulos {
+        font-size: var(--tamañoLetraCelular-tituloBienvenida-subtitulosSeccion);
+    }
+}
